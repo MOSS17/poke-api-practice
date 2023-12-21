@@ -22,6 +22,7 @@ class _ListScreenState extends State<ListScreen> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
+        foregroundColor: Colors.white,
         title: const Text("Pokedex App"),
         centerTitle: true,
         actions: [
