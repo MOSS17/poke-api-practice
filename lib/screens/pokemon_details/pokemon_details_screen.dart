@@ -6,7 +6,7 @@ import 'package:pokedex/utils/text_styles.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/pokemon_provider.dart';
-import 'pokemon_details_widgets.dart';
+import 'pokemon_type_badge.dart';
 
 class PokemonDetailsScreen extends StatelessWidget {
   const PokemonDetailsScreen({super.key});
