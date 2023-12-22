@@ -62,5 +62,27 @@ void main() {
       expect(find.text('Charizard'), findsAny);
       await Future.delayed(const Duration(seconds: 3));
     });
+
+    testWidgets('search for a pokemon', (tester) async {
+      app.main();
+      await tester.pumpAndSettle();
+      await Future.delayed(const Duration(seconds: 2));
+
+      final itemFinder = find.byIcon(Icons.search);
+
+      await tester.tap(itemFinder);
+      await tester.pumpAndSettle();
+      await Future.delayed(const Duration(seconds: 3));
+
+      await tester.enterText(find.byType(TextField), "94");
+      await Future.delayed(const Duration(seconds: 3));
+
+      await tester.tap(find.text("SEARCH"));
+      await tester.pumpAndSettle(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 3));
+
+      expect(find.text('Gengar'), findsAny);
+      await Future.delayed(const Duration(seconds: 3));
+    });
   });
 }
