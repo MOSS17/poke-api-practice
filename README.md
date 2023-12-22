@@ -20,6 +20,7 @@ To run integration tests connect your emulator or device and run the following c
 ```bash
 flutter test integration_test 
 ```
+
 ## Features
 
 ### Infinite Scroll
