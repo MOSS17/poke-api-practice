@@ -15,6 +15,12 @@ Once you have an emulator you can run the following command in your terminal
 flutter run
 ```
 
+## Tests
+To run integration tests connect your emulator or device and run the following command in your terminal
+```bash
+flutter test integration_test 
+```
+
 ## Features
 
 ### Infinite Scroll

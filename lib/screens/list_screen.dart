@@ -51,6 +51,7 @@ class _ListScreenState extends State<ListScreen> {
                       return true;
                     },
                     child: ListView.separated(
+                        key: const Key("pokemon_list"),
                         separatorBuilder: (context, index) => const SizedBox(height: 15),
                         physics: const BouncingScrollPhysics(),
                         itemCount: state.results!.length + 1,
@@ -59,6 +60,7 @@ class _ListScreenState extends State<ListScreen> {
                             return GestureDetector(
                               onTap: () => Navigator.pushNamed(context, '/pokemonDetails', arguments: index + 1),
                               child: Container(
+                                key: Key("pokemon_$index"),
                                 height: 150,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
@@ -103,9 +105,8 @@ class _ListScreenState extends State<ListScreen> {
   }
 }
 
-TextEditingController _textFieldController = TextEditingController();
-
 Future<void> _displayTextInputDialog(BuildContext context) async {
+  TextEditingController textFieldController = TextEditingController();
   return showDialog(
     context: context,
     builder: (context) {
@@ -113,7 +114,7 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
         title: const Text('Search pokemon by id'),
         content: TextField(
           keyboardType: TextInputType.number,
-          controller: _textFieldController,
+          controller: textFieldController,
           inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
           decoration: const InputDecoration(
             counterText: "Sorry but only pokemon id is supported for now",
@@ -130,9 +131,9 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
           TextButton(
             child: const Text('SEARCH'),
             onPressed: () {
-              String value = _textFieldController.text;
+              String value = textFieldController.text;
               if (int.parse(value) < 898 && int.parse(value) > 0) {
-                int id = int.parse(_textFieldController.text);
+                int id = int.parse(textFieldController.text);
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/pokemonDetails', arguments: id);
               }
