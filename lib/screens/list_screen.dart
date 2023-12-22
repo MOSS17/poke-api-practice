@@ -51,6 +51,7 @@ class _ListScreenState extends State<ListScreen> {
                       return true;
                     },
                     child: ListView.separated(
+                        key: const Key("pokemon_list"),
                         separatorBuilder: (context, index) => const SizedBox(height: 15),
                         physics: const BouncingScrollPhysics(),
                         itemCount: state.results!.length + 1,
@@ -59,6 +60,7 @@ class _ListScreenState extends State<ListScreen> {
                             return GestureDetector(
                               onTap: () => Navigator.pushNamed(context, '/pokemonDetails', arguments: index + 1),
                               child: Container(
+                                key: Key("pokemon_$index"),
                                 height: 150,
                                 decoration: BoxDecoration(
                                   color: Colors.white,
