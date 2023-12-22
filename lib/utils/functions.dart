@@ -1,6 +1,8 @@
+import 'dart:ui';
+
 import 'type_colors.dart';
 
-changeNumberToThreeDigits(int number) {
+String changeNumberToThreeDigits(int number) {
   String numberString = "";
   if (number < 10) {
     numberString = "00$number";
@@ -12,7 +14,7 @@ changeNumberToThreeDigits(int number) {
   return numberString;
 }
 
-getBackgroundColor(String type) {
+Color getBackgroundColor(String type) {
   switch (type) {
     case "dark":
       return colorDark;
@@ -50,5 +52,7 @@ getBackgroundColor(String type) {
       return colorWater;
     case "bug":
       return colorBug;
+    default:
+      return colorNormal;
   }
 }

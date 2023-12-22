@@ -103,9 +103,8 @@ class _ListScreenState extends State<ListScreen> {
   }
 }
 
-TextEditingController _textFieldController = TextEditingController();
-
 Future<void> _displayTextInputDialog(BuildContext context) async {
+  TextEditingController textFieldController = TextEditingController();
   return showDialog(
     context: context,
     builder: (context) {
@@ -113,7 +112,7 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
         title: const Text('Search pokemon by id'),
         content: TextField(
           keyboardType: TextInputType.number,
-          controller: _textFieldController,
+          controller: textFieldController,
           inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
           decoration: const InputDecoration(
             counterText: "Sorry but only pokemon id is supported for now",
@@ -130,9 +129,9 @@ Future<void> _displayTextInputDialog(BuildContext context) async {
           TextButton(
             child: const Text('SEARCH'),
             onPressed: () {
-              String value = _textFieldController.text;
+              String value = textFieldController.text;
               if (int.parse(value) < 898 && int.parse(value) > 0) {
-                int id = int.parse(_textFieldController.text);
+                int id = int.parse(textFieldController.text);
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/pokemonDetails', arguments: id);
               }
